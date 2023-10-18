@@ -37,11 +37,7 @@ public class InMemoryResultProcessor implements ResultProcessor {
         System.out.printf("Получено %d баллов из %d возможных\n", result, maxPoints);
         if (result != maxPoints) {
         System.out.println("Задания в которых были допущены ошибки: " +
-                tasksWithMistakes.toString().replaceAll("\\[|\\]", ""));
+                tasksWithMistakes.toString().replaceAll("[\\[\\]]", ""));
         }
-    }
-
-    public void valueTest() {
-        System.out.println(taskPoints);
     }
 }

@@ -16,7 +16,7 @@ public class InMemoryResultParser implements ResultParser {
     @Value("classpath:Right-answers.txt")
     private Resource rightFile;
 
-    @Value("classpath:Student1-answers.txt")
+    @Value("classpath:Student2-answers.txt")
     private Resource studentFile;
 
     private List<String> rightAnswers;
@@ -45,7 +45,7 @@ public class InMemoryResultParser implements ResultParser {
 
     }
 
-    public List<String> fileToList(File file) throws IOException {
+    private List<String> fileToList(File file) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(file));
         List<String> list = new ArrayList<>();
         String line;
