@@ -35,7 +35,7 @@ public class InMemoryResultParser implements ResultParser {
         return studentsAnswers;
     }
 
-    private void parseData() {
+    public void parseData() {
         try {
             rightAnswers = fileToList(rightFile.getFile());
             studentsAnswers = fileToList(studentFile.getFile());
@@ -45,24 +45,19 @@ public class InMemoryResultParser implements ResultParser {
 
     }
 
-    public List<String> fileToList(File file) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            List<String> list = new ArrayList<>();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                Pattern pattern = Pattern.compile("\\d+ - ([АБВГ])");
-                Matcher matcher = pattern.matcher(line);
-                if (matcher.matches()) {
-                    String answerLetter = matcher.group(1);
-                    list.add(answerLetter);
-                } else list.add(null);
-            }
-            return list;
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException("File not found");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    public List<String> fileToList(File file) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        List<String> list = new ArrayList<>();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            Pattern pattern = Pattern.compile("\\d+ - ([АБВГ])");
+            Matcher matcher = pattern.matcher(line);
+            if (matcher.matches()) {
+                String answerLetter = matcher.group(1);
+                list.add(answerLetter);
+            } else list.add(null);
         }
+        reader.close();
+        return list;
     }
 }

@@ -1,5 +1,7 @@
 package org.example;
 
 public interface ResultProcessor {
-    int getResult();
+    void getResult();
+
+    void valueTest();
 }

@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@ComponentScan("example")
+@ComponentScan("org.example")
 @Import(PropertiesConfiguration.class)
 public class ResultProcessorConfig {
 }

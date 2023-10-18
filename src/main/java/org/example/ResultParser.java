@@ -8,4 +8,6 @@ public interface ResultParser {
 
     List<String> getStudentsAnswers();
 
+    void parseData();
+
 }
